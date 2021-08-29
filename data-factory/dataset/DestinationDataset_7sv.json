@@ -1,0 +1,16 @@
+{
+	"name": "DestinationDataset_7sv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "blissTargetConCOS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "CosmosDbSqlApiCollection",
+		"schema": {},
+		"typeProperties": {
+			"collectionName": "targetContainer"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

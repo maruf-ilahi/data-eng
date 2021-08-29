@@ -1,0 +1,50 @@
+{
+	"name": "SourceDataset_z64",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "blissProdSourceCon",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "oc_product.csv",
+				"fileSystem": "bliss-table-product"
+			},
+			"columnDelimiter": ",",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "product_id",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "ean",
+				"type": "String"
+			},
+			{
+				"name": "quantity",
+				"type": "String"
+			},
+			{
+				"name": "price",
+				"type": "String"
+			},
+			{
+				"name": "date_added",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

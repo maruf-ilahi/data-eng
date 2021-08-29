@@ -1,0 +1,151 @@
+{
+	"name": "BlissCopyPipeLine",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_z64",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "bliss-table-product//oc_product.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.bliss_product"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "blissProdCon",
+							"type": "LinkedServiceReference"
+						},
+						"path": "test-container-999555"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "product_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "product_id",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ean",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "barcode",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "quantity",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "quantity",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "price",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "price",
+									"type": "Decimal",
+									"physicalType": "money"
+								}
+							},
+							{
+								"source": {
+									"name": "date_added",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "date_added",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_z64",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_z64",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-08-29T01:25:46Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

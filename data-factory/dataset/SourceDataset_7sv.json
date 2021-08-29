@@ -1,0 +1,231 @@
+{
+	"name": "SourceDataset_7sv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "blissProdSourceCon",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "oc_order.json",
+				"folderPath": "test-folder-999555/bliss_production_db",
+				"fileSystem": "test-container-999555"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"type": {
+					"type": "string"
+				},
+				"version": {
+					"type": "string"
+				},
+				"comment": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"database": {
+					"type": "string"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"order_id": {
+								"type": "string"
+							},
+							"invoice_no": {
+								"type": "string"
+							},
+							"invoice_prefix": {
+								"type": "string"
+							},
+							"store_id": {
+								"type": "string"
+							},
+							"store_name": {
+								"type": "string"
+							},
+							"store_url": {
+								"type": "string"
+							},
+							"customer_id": {
+								"type": "string"
+							},
+							"customer_group_id": {
+								"type": "string"
+							},
+							"firstname": {
+								"type": "string"
+							},
+							"lastname": {
+								"type": "string"
+							},
+							"email": {
+								"type": "string"
+							},
+							"telephone": {
+								"type": "string"
+							},
+							"fax": {
+								"type": "string"
+							},
+							"custom_field": {
+								"type": "string"
+							},
+							"payment_firstname": {
+								"type": "string"
+							},
+							"payment_lastname": {
+								"type": "string"
+							},
+							"payment_company": {
+								"type": "string"
+							},
+							"payment_address_1": {
+								"type": "string"
+							},
+							"payment_address_2": {
+								"type": "string"
+							},
+							"payment_city": {
+								"type": "string"
+							},
+							"payment_postcode": {
+								"type": "string"
+							},
+							"payment_country": {
+								"type": "string"
+							},
+							"payment_country_id": {
+								"type": "string"
+							},
+							"payment_zone": {
+								"type": "string"
+							},
+							"payment_zone_id": {
+								"type": "string"
+							},
+							"payment_address_format": {
+								"type": "string"
+							},
+							"payment_custom_field": {
+								"type": "string"
+							},
+							"payment_method": {
+								"type": "string"
+							},
+							"payment_code": {
+								"type": "string"
+							},
+							"shipping_firstname": {
+								"type": "string"
+							},
+							"shipping_lastname": {
+								"type": "string"
+							},
+							"shipping_company": {
+								"type": "string"
+							},
+							"shipping_address_1": {
+								"type": "string"
+							},
+							"shipping_address_2": {
+								"type": "string"
+							},
+							"shipping_city": {
+								"type": "string"
+							},
+							"shipping_postcode": {
+								"type": "string"
+							},
+							"shipping_country": {
+								"type": "string"
+							},
+							"shipping_country_id": {
+								"type": "string"
+							},
+							"shipping_zone": {
+								"type": "string"
+							},
+							"shipping_zone_id": {
+								"type": "string"
+							},
+							"shipping_address_format": {
+								"type": "string"
+							},
+							"shipping_custom_field": {
+								"type": "string"
+							},
+							"shipping_method": {
+								"type": "string"
+							},
+							"shipping_code": {
+								"type": "string"
+							},
+							"comment": {
+								"type": "string"
+							},
+							"total": {
+								"type": "string"
+							},
+							"order_status_id": {
+								"type": "string"
+							},
+							"affiliate_id": {
+								"type": "string"
+							},
+							"commission": {
+								"type": "string"
+							},
+							"marketing_id": {
+								"type": "string"
+							},
+							"tracking": {
+								"type": "string"
+							},
+							"language_id": {
+								"type": "string"
+							},
+							"currency_id": {
+								"type": "string"
+							},
+							"currency_code": {
+								"type": "string"
+							},
+							"currency_value": {
+								"type": "string"
+							},
+							"ip": {
+								"type": "string"
+							},
+							"forwarded_ip": {
+								"type": "string"
+							},
+							"user_agent": {
+								"type": "string"
+							},
+							"accept_language": {
+								"type": "string"
+							},
+							"date_added": {
+								"type": "string"
+							},
+							"date_modified": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
