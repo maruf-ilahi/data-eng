@@ -7,21 +7,13 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "test-dfc-9955"
 		},
-		"AzureBlobStorage1_connectionString": {
+		"LSBlobCovid_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+			"metadata": "Secure string for 'connectionString' of 'LSBlobCovid'"
 		},
-		"AzureSqlDatabase1_connectionString": {
+		"LSSqlCovid_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
-		},
-		"SqlDBTargetCon_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'SqlDBTargetCon'"
-		},
-		"blissTargetConCOS_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'blissTargetConCOS'"
+			"metadata": "Secure string for 'connectionString' of 'LSSqlCovid'"
 		}
 	},
 	"variables": {
@@ -29,56 +21,124 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
+			"name": "[concat(parameters('factoryName'), '/LSBlobCovid')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+					"connectionString": "[parameters('LSBlobCovid_connectionString')]"
 				}
 			},
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase1')]",
+			"name": "[concat(parameters('factoryName'), '/LSSqlCovid')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
-					"connectionString": "[parameters('AzureSqlDatabase1_connectionString')]"
+					"connectionString": "[parameters('LSSqlCovid_connectionString')]"
 				}
 			},
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/SqlDBTargetCon')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"name": "[concat(parameters('factoryName'), '/DSBlobCovid')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LSBlobCovid",
+					"type": "LinkedServiceReference"
+				},
 				"annotations": [],
-				"type": "AzureSqlDatabase",
+				"type": "DelimitedText",
 				"typeProperties": {
-					"connectionString": "[parameters('SqlDBTargetCon_connectionString')]"
-				}
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "data_vaccination_UK_2021-Aug-28.csv",
+						"container": "raw-data"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LSBlobCovid')]"
+			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/blissTargetConCOS')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"name": "[concat(parameters('factoryName'), '/DSSqlVac')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LSSqlCovid",
+					"type": "LinkedServiceReference"
+				},
 				"annotations": [],
-				"type": "CosmosDb",
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "areaType",
+						"type": "varchar"
+					},
+					{
+						"name": "areaName",
+						"type": "varchar"
+					},
+					{
+						"name": "areaCode",
+						"type": "varchar"
+					},
+					{
+						"name": "date",
+						"type": "date"
+					},
+					{
+						"name": "newPeopleVaccicatedFirstDoseByPublishDate",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "cumPeopleVaccicatedFirstDoseByPublishDate",
+						"type": "int",
+						"precision": 10
+					}
+				],
 				"typeProperties": {
-					"connectionString": "[parameters('blissTargetConCOS_connectionString')]"
+					"schema": "dbo",
+					"table": "CovidVaccination"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LSSqlCovid')]"
+			]
 		}
 	]
 }

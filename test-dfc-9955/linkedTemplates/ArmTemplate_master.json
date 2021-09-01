@@ -7,21 +7,13 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "test-dfc-9955"
 		},
-		"AzureBlobStorage1_connectionString": {
+		"LSBlobCovid_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+			"metadata": "Secure string for 'connectionString' of 'LSBlobCovid'"
 		},
-		"AzureSqlDatabase1_connectionString": {
+		"LSSqlCovid_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
-		},
-		"SqlDBTargetCon_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'SqlDBTargetCon'"
-		},
-		"blissTargetConCOS_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'blissTargetConCOS'"
+			"metadata": "Secure string for 'connectionString' of 'LSSqlCovid'"
 		},
 		"containerUri": {
 			"type": "string",
@@ -50,17 +42,11 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"AzureBlobStorage1_connectionString": {
-						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					"LSBlobCovid_connectionString": {
+						"value": "[parameters('LSBlobCovid_connectionString')]"
 					},
-					"AzureSqlDatabase1_connectionString": {
-						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
-					},
-					"SqlDBTargetCon_connectionString": {
-						"value": "[parameters('SqlDBTargetCon_connectionString')]"
-					},
-					"blissTargetConCOS_connectionString": {
-						"value": "[parameters('blissTargetConCOS_connectionString')]"
+					"LSSqlCovid_connectionString": {
+						"value": "[parameters('LSSqlCovid_connectionString')]"
 					}
 				}
 			},

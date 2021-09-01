@@ -5,16 +5,10 @@
 		"factoryName": {
 			"value": "test-dfc-9955"
 		},
-		"AzureBlobStorage1_connectionString": {
+		"LSBlobCovid_connectionString": {
 			"value": ""
 		},
-		"AzureSqlDatabase1_connectionString": {
-			"value": ""
-		},
-		"SqlDBTargetCon_connectionString": {
-			"value": ""
-		},
-		"blissTargetConCOS_connectionString": {
+		"LSSqlCovid_connectionString": {
 			"value": ""
 		},
 		"containerUri": {
