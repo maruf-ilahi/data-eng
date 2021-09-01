@@ -1,0 +1,9 @@
+{
+	"name": "test-dfc-9955",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e410651f-850c-4c33-8094-018fa2792d59",
+		"tenantId": "d59a3161-ab21-4345-903a-6e106ecbcc92"
+	}
+}

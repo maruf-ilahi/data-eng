@@ -1,0 +1,50 @@
+{
+	"name": "SourceDataset_8so",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "data_vaccination_UK_2021-Aug-28.csv",
+				"container": "covid-vaccination-uk"
+			},
+			"columnDelimiter": ",",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "areaType",
+				"type": "String"
+			},
+			{
+				"name": "areaName",
+				"type": "String"
+			},
+			{
+				"name": "areaCode",
+				"type": "String"
+			},
+			{
+				"name": "date",
+				"type": "String"
+			},
+			{
+				"name": "newPeopleVaccinatedFirstDoseByPublishDate",
+				"type": "String"
+			},
+			{
+				"name": "cumPeopleVaccinatedFirstDoseByPublishDate",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

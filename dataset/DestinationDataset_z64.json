@@ -1,0 +1,54 @@
+{
+	"name": "DestinationDataset_z64",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlDBTargetCon",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "product_id",
+				"type": "int",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "name",
+				"type": "nvarchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "barcode",
+				"type": "bigint",
+				"precision": 19,
+				"scale": 0
+			},
+			{
+				"name": "quantity",
+				"type": "int",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "price",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "date_added",
+				"type": "date",
+				"precision": 10,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "bliss_product"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "DestinationDataset_paz",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlDBTargetCon",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "bliss_order"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
