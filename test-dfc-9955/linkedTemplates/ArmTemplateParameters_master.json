@@ -11,6 +11,12 @@
 		"AzureSqlDatabase1_connectionString": {
 			"value": ""
 		},
+		"SqlDBTargetCon_connectionString": {
+			"value": ""
+		},
+		"blissTargetConCOS_connectionString": {
+			"value": ""
+		},
 		"containerUri": {
 			"value": ""
 		},
