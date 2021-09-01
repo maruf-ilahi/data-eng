@@ -1,0 +1,43 @@
+{
+	"name": "DSSqlVac",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSSqlCovid",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "areaType",
+				"type": "varchar"
+			},
+			{
+				"name": "areaName",
+				"type": "varchar"
+			},
+			{
+				"name": "areaCode",
+				"type": "varchar"
+			},
+			{
+				"name": "date",
+				"type": "date"
+			},
+			{
+				"name": "newPeopleVaccicatedFirstDoseByPublishDate",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "cumPeopleVaccicatedFirstDoseByPublishDate",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CovidVaccination"
+		}
+	}
+}
