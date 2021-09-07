@@ -1,5 +1,5 @@
 {
-	"name": "pl_inquest_vaccine_data",
+	"name": "pl_nhs_covid",
 	"properties": {
 		"activities": [
 			{
@@ -147,7 +147,14 @@
 			{
 				"name": "Check File Exists",
 				"type": "Validation",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Lookup File List",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
@@ -157,6 +164,19 @@
 					"timeout": "00.00:00:59",
 					"sleep": 10
 				}
+			},
+			{
+				"name": "Lookup File List",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
 			}
 		],
 		"annotations": []
